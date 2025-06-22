@@ -1,4 +1,3 @@
-console.log("Script geladen!");
 function fetchAchievement() {
     fetch('achievements.json')
         .then(response => response.json())
@@ -9,10 +8,13 @@ function fetchAchievement() {
             document.getElementById("achievement").textContent = achievement;
         })
         .catch(error => {
-            console.error('Fout bij laden:', error);
-            document.getElementById("achievement").textContent = "Kon geen achievement laden.";
+            console.error('Fout bij het laden van achievements:', error);
+            document.getElementById("achievement").textContent = "Kon de achievement niet laden.";
         });
 }
+
+window.onload = fetchAchievement;
+
 fetch('achievements.json')
     .then(response => response.json())
     .then(data => {
